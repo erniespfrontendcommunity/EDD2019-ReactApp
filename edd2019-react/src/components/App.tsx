@@ -1,6 +1,6 @@
 import * as React from 'react';
-import gif from '../images/mgc.gif';
 import '../styles/App.css';
+import AddCat from './AddCat';
 
 
 class App extends React.Component {
@@ -8,7 +8,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <p className="App-title">Paul's magic goes here</p>
-        <img src={gif} className="App-logo" alt="logo" />
+        <br></br>
+        <br></br>
+        <AddCat></AddCat>
       </div>
     );
   }
