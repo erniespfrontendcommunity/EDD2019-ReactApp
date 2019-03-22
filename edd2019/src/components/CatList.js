@@ -36,6 +36,7 @@ class CatList extends React.Component {
         for (var i = 0; i < numberOfCats; ++i) {
             let tokenuid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
             let catAttr = await contract.methods.getCatAttributes(tokenuid).call();
+            console.log(catAttr);
             catOwned.push(new CatAttr(catAttr.catName, catAttr.stealth, catAttr.dexterity, catAttr.intelligence, catAttr.cuteness, catAttr.evilness, catAttr.chaosLevel));
         }
         console.log("List of cats");
