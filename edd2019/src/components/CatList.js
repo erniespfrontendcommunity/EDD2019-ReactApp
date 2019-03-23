@@ -2,15 +2,14 @@ import * as React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
 import { CatAttr } from '../config/CatInterface.js';
-
+import {Config} from "../config/Config";
 
 class CatList extends React.Component {
 
     async getCatList() {
         // Metamask insert web3 object into window object when the account is unlocked
         var web3 = new Web3(window.web3.currentProvider);
-        const catAddress = "0x16d8ef9a12f618d426df1bfe7735cd8a74803572";
-        let contract = new web3.eth.Contract(catABI, catAddress);
+        let contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
         let accounts = await web3.eth.getAccounts();
         let personalAccount = accounts[0];
         let catOwned = [];
