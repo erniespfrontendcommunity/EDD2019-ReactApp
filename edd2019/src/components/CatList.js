@@ -46,7 +46,7 @@ class CatList extends React.Component {
     render() {
         return (
             <div className="CatList">
-                <button onClick={this.getCatList}>Get cat list</button>
+                <button className="nes-btn is-primary" onClick={this.getCatList}>Get cat list</button>
             </div>
         );
     }
