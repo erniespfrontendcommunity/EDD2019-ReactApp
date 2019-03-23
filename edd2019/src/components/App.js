@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddCat from './AddCat';
 import CatList from './CatList';
+import CatCard from './CatCard';
 
 class App extends Component {
   render() {
@@ -8,11 +9,14 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <p>
-            Paul's magic
+            Rodrigo's magic
           </p>
+        </header>
+        <main>
           <AddCat></AddCat>
           <CatList></CatList>
-        </header>
+          <CatCard name="adsf"></CatCard>
+        </main>
       </div>
     );
   }

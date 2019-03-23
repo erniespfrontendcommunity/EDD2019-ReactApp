@@ -1,25 +1,7 @@
 import * as React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
-
-
-// const ChaosLevels = {
-//     GOOD_BOII,
-//     LITTLE_DEVIL,
-//     CHAOS_BRINGER
-// };
-
-export class CatAttr {
-    constructor(name, stealth, dexterity, intelligence, cuteness, evilness, chaosLevel) {
-        this.name = name;
-        this.stealth = stealth;
-        this.dexterity = dexterity;
-        this.intelligence = intelligence;
-        this.cuteness = cuteness;
-        this.evilness = evilness;
-        this.chaosLevel = chaosLevel;
-    }
-}
+import { CatAttr } from '../config/CatInterface.js';
 
 
 class CatList extends React.Component {
