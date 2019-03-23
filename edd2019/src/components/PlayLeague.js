@@ -17,7 +17,7 @@ class PlayLeague extends React.Component {
     render() {
         return (
             <div className="PlayLeague">
-                <button onClick={this.playLeague}>Play league</button>
+                <button className="nes-btn is-primary" onClick={this.playLeague}>Play league</button>
             </div>
         );
     }

@@ -25,8 +25,11 @@ class AddCat extends React.Component {
 
     render() {
         return (
-            <div className="AddCat">
-                <button className="nes-btn is-primary" onClick={this.addCat}>Add cat</button>
+            <div className="App">
+                <p>Form goes here?</p>
+                <div className="AddCat">
+                    <button className="nes-btn is-primary" onClick={this.addCat}>Add cat</button>
+                </div>
             </div>
         );
     }

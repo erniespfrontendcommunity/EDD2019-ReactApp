@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import AddCat from './AddCat';
 import CatList from './CatList';
 import CatCard from './CatCard';
 
-class App extends Component {
+
+class CatSquad extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-            Rodrigo's magic
-          </p>
-        </header>
         <main>
-          <AddCat></AddCat>
           <CatList></CatList>
           <CatCard name="adsf"></CatCard>
         </main>
@@ -22,4 +16,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default CatSquad;
