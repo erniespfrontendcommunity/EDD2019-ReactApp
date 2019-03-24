@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import leagueABI from "../contractsBin/league.json";
 import { Config } from "../config/Config";
 
-class AddSquad extends React.Component {
+class ResetLeague extends React.Component {
 
     async resetLeague() {
         // Metamask insert web3 object into window object when the account is unlocked
@@ -23,4 +23,4 @@ class AddSquad extends React.Component {
     }
 }
 
-export default AddSquad;
+export default ResetLeague;
