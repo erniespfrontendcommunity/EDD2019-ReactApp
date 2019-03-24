@@ -15,9 +15,9 @@ class PlayLeague extends React.Component {
 
     render() {
         return (
-            <div className="PlayLeague">
+            <section className="PlayLeague">
                 <button className="nes-btn is-primary" onClick={this.playLeague}>Play league</button>
-            </div>
+            </section>
         );
     }
 }

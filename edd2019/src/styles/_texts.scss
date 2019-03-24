@@ -1,0 +1,10 @@
+$SIZES: (
+  paragraph: 1em,
+  paragraph-bigger: 1.25em,
+);
+
+@each $name, $size in $SIZES {
+  .text-#{$name} {
+      font-size: #{$size};
+  }
+}
