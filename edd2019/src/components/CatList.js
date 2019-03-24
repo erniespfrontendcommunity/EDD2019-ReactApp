@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
 import { CatAttr } from '../config/CatInterface.js';

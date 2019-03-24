@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Web3 from 'web3';
 import leagueABI from "../contractsBin/league.json";
 import { Config } from "../config/Config";

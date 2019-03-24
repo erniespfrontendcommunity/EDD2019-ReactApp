@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
-import {Config} from "../config/Config";
+import { Config } from "../config/Config";
 
 
 class AddCat extends React.Component {

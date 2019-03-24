@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './styles/index.scss';
-import Lore from './pages/Lore';
-import AddCat from './pages/AddCat';
-import CatSquad from './pages/CatSquad';
-import PlayLeague from './pages/PlayLeague';
+
+import { routesMap } from './routes.config'
+
 import Header from './components/Header'
 
 ReactDOM.render (
@@ -14,10 +14,16 @@ ReactDOM.render (
       <div>
         <Header/>
         <main>
-          <Route exact path="/" component={Lore} />
-          <Route exact path="/createCat" component={AddCat} />
-          <Route exact path="/catSquad" component={CatSquad} />
-          <Route exact path="/playLeague" component={PlayLeague} />
+          <Suspense fallback={<div>Loading...</div>}>
+            {
+              Object.keys(routesMap).map((routeKey, index) => {
+                const route = routesMap[routeKey]
+                return (
+                  <Route key={index} exact path={route.path} component={route.component} />
+                )
+              })
+            }
+          </Suspense>
         </main>
 
       </div>

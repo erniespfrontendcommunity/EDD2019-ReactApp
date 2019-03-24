@@ -1,21 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { routesMap } from '../routes.config'
+
 export default function Header() {
   return (
     <ul className="navBar">
-      <li>
-        <Link to="/">Lore</Link>
-      </li>
-      <li>
-        <Link to="/createCat">Create Cat</Link>
-      </li>
-      <li>
-        <Link to="/catSquad">Create Cat Squad</Link>
-      </li>
-      <li>
-        <Link to="/playLeague">Play Cat League</Link>
-      </li>
+      {
+        Object.keys(routesMap).map((routeKey, index) => {
+          const route = routesMap[routeKey]
+          return (
+            <li key={index}>
+              <Link to={route.path}>{route.label}</Link>
+            </li>
+          )
+        })
+      }
     </ul>
   )
 }
