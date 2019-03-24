@@ -1,0 +1,13 @@
+
+// @media
+$BREAK_POINTS: (
+  sm: '(max-width: 64em)',
+  md: '(min-width: 64.01em) and (max-width: 87.99em)',
+  xl: '(min-width: 88em)',
+);
+
+// text-size
+$SIZES: (
+  paragraph: 1em,
+  paragraph-bigger: 1.25em,
+);

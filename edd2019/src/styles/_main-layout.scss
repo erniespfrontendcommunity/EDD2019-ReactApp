@@ -1,0 +1,8 @@
+main > section {
+  @include media('xl') {
+    margin: 0 10%;
+  }
+  @include media('md') {
+    margin: 0 5%;
+  }
+}
