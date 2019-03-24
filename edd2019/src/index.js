@@ -3,31 +3,16 @@ import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import Lore from './components/Lore';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AddCat from './components/AddCat';
 import CatSquad from './components/CatSquad';
 import PlayLeague from './components/PlayLeague';
+import Header from './components/Header'
 
 ReactDOM.render (
 <Router>
       <div>
-        <ul className="navBar">
-          <li>
-            <Link to="/">Lore</Link>
-          </li>
-          <li>
-            <Link to="/createCat">Create Cat</Link>
-          </li>
-          <li>
-            <Link to="/catSquad">Create Cat Squad</Link>
-          </li>
-          <li>
-            <Link to="/playLeague">Play Cat League</Link>
-          </li>
-        </ul>
-
-        <hr />
-
+        <Header/>
         <Route exact path="/" component={Lore} />
         <Route exact path="/createCat" component={AddCat} />
         <Route exact path="/catSquad" component={CatSquad} />
