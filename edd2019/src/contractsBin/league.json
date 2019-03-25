@@ -1,99 +1,5 @@
 [
 	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"name": "catId1",
-				"type": "uint256"
-			},
-			{
-				"name": "catId2",
-				"type": "uint256"
-			},
-			{
-				"name": "catId3",
-				"type": "uint256"
-			}
-		],
-		"name": "addSquad",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "squadName1",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "squadName2",
-				"type": "string"
-			}
-		],
-		"name": "MatchStart",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "squadName1",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "squadName2",
-				"type": "string"
-			}
-		],
-		"name": "MatchWin",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "playLeague",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"name": "catContractAddress",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getClassification",
-		"outputs": [
-			{
-				"name": "result",
-				"type": "address[20]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
@@ -128,6 +34,25 @@
 		"constant": true,
 		"inputs": [
 			{
+				"name": "i",
+				"type": "uint256"
+			}
+		],
+		"name": "getParticipant",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
 				"name": "",
 				"type": "address"
 			}
@@ -142,5 +67,127 @@
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "participant",
+				"type": "address"
+			}
+		],
+		"name": "getSquadName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "resetLeague",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getTotalParticipants",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"name": "catId1",
+				"type": "uint256"
+			},
+			{
+				"name": "catId2",
+				"type": "uint256"
+			},
+			{
+				"name": "catId3",
+				"type": "uint256"
+			}
+		],
+		"name": "addSquad",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "playLeague",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "catContractAddress",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "squadName1",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "squadName2",
+				"type": "string"
+			}
+		],
+		"name": "MatchStart",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "squadName1",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "squadName2",
+				"type": "string"
+			}
+		],
+		"name": "MatchWin",
+		"type": "event"
 	}
 ]

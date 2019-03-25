@@ -31,13 +31,15 @@ contract Cat is ERC721Full{
 
     function addCat(string memory catName, int stealth, int dexterity, int intelligence, int cuteness, int evilness, ChaosLevels chaosLevel) public payable{
         bytes memory nameByte = bytes(catName);
+        int totalValue = stealth + dexterity + intelligence + cuteness + evilness;
         require(msg.value == 0.1 ether, "Payment value is incorrect");
         require(nameByte.length != 0, "A cat needs a name");
         require(stealth <= 20, "Stealth is too high");
         require(dexterity <= 20, "Dexterity is too high");
         require(intelligence <= 20, "Intelligence is too high");
         require(cuteness <= 20, "Cuteness is too high");
-        require(evilness <= 20, "Evilness is too high");                
+        require(evilness <= 20, "Evilness is too high");    
+        require(totalValue <= 40, "The sum of the attributes is too high");
         super._mint(msg.sender, totalSupply());        
         CatAttributes memory attributes = CatAttributes(
         {

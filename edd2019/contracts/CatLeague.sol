@@ -6,6 +6,8 @@ contract League{
     address private _owner;
         
     Cat catContract;
+    
+    bool isLeagueFinished;
 
     struct Squad{
         string name;
@@ -27,13 +29,11 @@ contract League{
         string squadName1,
         string squadName2
         );
-    
-    mapping(uint => string[]) matchLog;
-    uint[] matchLogArray;
-    
+        
     constructor(address catContractAddress) public{
         catContract = Cat(catContractAddress);
         _owner = msg.sender;
+        isLeagueFinished = false;
     }
     
      modifier onlyOwner() {
@@ -52,13 +52,20 @@ contract League{
         leagueTeams[msg.sender] = squad;
     }
     
-    function getClassification() public view returns(address[20] memory result){
-        for(uint i=0; i < participants.length; i++){
-            result[points[participants[i]]] = participants[i];
-        }
+    function getParticipant(uint i) public view returns(address){
+        return participants[i];
+    }
+    
+    function getSquadName(address participant) public view returns(string memory){
+        return leagueTeams[participant].name;
+    }
+    
+    function getTotalParticipants() public view returns(uint){
+        return participants.length;
     }
     
     function playLeague() public onlyOwner{
+        require(isLeagueFinished == false, "League is already finished, reset before starting again!");
         address participant;
         address oponent;
         for(uint i = 0; i < participants.length; i++){
@@ -70,6 +77,19 @@ contract League{
                 
             }
         }
+        isLeagueFinished = true;
+    }
+    
+    function resetLeague() public onlyOwner{
+        require(isLeagueFinished == true, "League has not started");
+        address participant;
+         for(uint i = 0; i < participants.length; i++){
+            participant = participants[i];
+            delete leagueTeams[participant];
+            delete points[participant];
+         }
+         delete participants;
+         isLeagueFinished = false;
     }
     
     function playGame(address participant1, address participant2) private returns (address){
