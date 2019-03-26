@@ -1,0 +1,30 @@
+.AddCat {
+  .title {
+    color: black;
+  }
+
+  .addCat-container-content {
+    display: flex;
+
+    .addCat-form {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+
+      .catForm {
+        width: 60%;
+
+        .margin-bottom-10 {
+          margin-bottom: 10px;
+        }
+
+        .AddCatButton {
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
