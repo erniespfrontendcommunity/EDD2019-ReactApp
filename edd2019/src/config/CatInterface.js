@@ -1,7 +1,7 @@
 export const ChaosLevels = {
-    GOOD_BOII: 'GOOD_BOII',
-    LITTLE_DEVIL: 'LITTLE_DEVIL',
-    CHAOS_BRINGER: 'CHAOS_BRINGER'
+    GOOD_BOII: 0,
+    LITTLE_DEVIL: 1,
+    CHAOS_BRINGER: 2
 };
 
 export class CatAttr {
