@@ -78,7 +78,7 @@ class AddCat extends React.Component {
         return (
             <section className="AddCat">
                 <div className="nes-container with-title is-centered">
-                    <p className="title">Create your cat</p>
+                    <p className="title titleContainer">Create your cat</p>
                     <div className="addCat-container-content">
                         <div className="nes-container is-rounded">
                             <img src={catRpg} alt="catRpg" />
