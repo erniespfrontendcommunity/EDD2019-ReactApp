@@ -1,0 +1,24 @@
+.Lore {
+  p {
+    color: black;
+  }
+
+  .lore-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .image-cat {
+      margin-left: 40%;
+      img {
+        width: 100px;
+      }
+    }
+
+    .image-oak {
+      img {
+        width: 520px;
+      }
+    }
+  }
+}
