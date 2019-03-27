@@ -6,19 +6,13 @@
   .lore-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
 
-    .image-cat {
-      margin-left: 40%;
-      img {
-        width: 100px;
+    .images{
+      .img-oak {
+        width: 380px;
       }
-    }
 
-    .image-oak {
-      img {
-        width: 520px;
-      }
     }
   }
 }
