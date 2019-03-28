@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import oak from '../assets/images/oak.gif'
-//import pixelCat from '../assets/images/pixelcat.png';
 
 class Lore extends Component {
   render() {
