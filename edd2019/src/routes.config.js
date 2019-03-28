@@ -21,9 +21,4 @@ export const routesMap = {
     component: React.lazy(() => import( /* webpackChunkName: "PlayLeague" */ './pages/PlayLeague')),
     label: 'Play Cat League'
   },
-  TEST: {
-    path: '/test',
-    component: React.lazy(() => import( /* webpackChunkName: "SandBox" */ './pages/SandBox')),
-    label: 'Sandbox'
-  },
 }

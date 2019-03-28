@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Web3 from 'web3';
 
+
 import { CatAttr } from '../config/CatInterface.js';
 import catABI from "../contractsBin/cat.json";
 import { Config } from "../config/Config";
@@ -11,12 +12,15 @@ const INITAL_STATE = {
 }
 
 class CatSquad extends Component {
+
     constructor() {
         super();
         this.state = {
             cats: INITAL_STATE.cats
         }
     }
+
+    // @TODO inut para el nombre del squad
 
     async componentWillMount() {
         await this.getCatList();
@@ -33,8 +37,15 @@ class CatSquad extends Component {
         for (var i = 0; i < numberOfCats; ++i) {
             let tokenuid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
             let catAttr = await contract.methods.getCatAttributes(tokenuid).call();
-            // as they come (not all at once...)
-            this.catsToState(new CatAttr(...Object.values(catAttr)));
+            this.catsToState(new CatAttr(
+                catAttr.name,
+                catAttr.stealth,
+                catAttr.dexterity,
+                catAttr.intelligence,
+                catAttr.cuteness,
+                catAttr.evilness,
+                catAttr.chaosLevel
+            ));
         }
     }
 
@@ -46,24 +57,24 @@ class CatSquad extends Component {
         })
     }
 
-
     render() {
         return (
             <>
                 {
                     this.state.cats.map((cat, i) => {
-                    return (
-                        <CatCard
-                            key={i}
-                            name={cat.name}
-                            stealth={cat.stealth}
-                            dexterity={cat.dexterity}
-                            intelligence={cat.intelligence}
-                            cuteness={cat.cuteness}
-                            evilness={cat.evilness}
-                            chaosLevel={cat.chaosLevel}
-                        />)
-                    })
+                        return (
+                                <CatCard
+                                    key={i}
+                                    name={cat.name}
+                                    stealth={cat.stealth}
+                                    dexterity={cat.dexterity}
+                                    intelligence={cat.intelligence}
+                                    cuteness={cat.cuteness}
+                                    evilness={cat.evilness}
+                                    chaosLevel={cat.chaosLevel}
+                                />
+                            )
+                        })
                 }
             </>
         );
