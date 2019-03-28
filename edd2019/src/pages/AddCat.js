@@ -34,37 +34,9 @@ class AddCat extends React.Component {
             .send({ from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000 })
     }
 
-    // Todo change this for only one function
-
-    handleNameChange = (event) => {
-        this.setState({CatName: event.target.value });
+    handleInputChange = (event) => {
+        this.setState({[event.target.dataset.name]: event.target.value });
     }
-
-    handleStealthChange = (event) => {
-        this.setState({CatStealth: event.target.value });
-    }
-
-    handleDexterityChange = (event) => {
-        this.setState({CatDexterity: event.target.value });
-    }
-
-    handleIntelligenceChange = (event) => {
-        this.setState({CatIntelligence: event.target.value });
-    }
-
-    handleCutenessChange = (event) => {
-        this.setState({CatCuteness: event.target.value });
-    }
-
-    handleEvilnessChange = (event) => {
-        this.setState({CatEvilness: event.target.value });
-    }
-
-    handleChaosLevelChange = (event) => {
-        this.setState({ChaosLevel: event.target.value });
-    }
-
-    //
 
     render() {
         return (
@@ -79,31 +51,87 @@ class AddCat extends React.Component {
                             <form className="catForm">
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="name_field">Cat Name</label>
-                                    <input type="text" id="name_field" className="nes-input" value={this.state.CatName} onChange={this.handleNameChange} />
+                                    <input
+                                        id="name_field"
+                                        className="nes-input"
+                                        placeholder="Name..."
+                                        type="text"
+                                        autoComplete="nope"
+                                        data-name="CatName"
+                                        value={this.state.CatName}
+                                        onChange={this.handleInputChange}
+                                    />
                                 </div>
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="stealth_field">Cat stealth</label>
-                                    <input type="number" id="stealth_field" className="nes-input" value={this.state.CatStealth} onChange={this.handleStealthChange} />
+                                    <input
+                                        id="stealth_field"
+                                        className="nes-input"
+                                        placeholder="0"
+                                        type="number"
+                                        data-name="CatStealth"
+                                        value={this.state.CatStealth}
+                                        onChange={this.handleInputChange}
+                                    />
                                 </div>
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="dexterity_field">Cat dexterity</label>
-                                    <input type="number" id="dexterity_field" className="nes-input" value={this.state.CatDexterity} onChange={this.handleDexterityChange} />
+                                    <input
+                                        id="dexterity_field"
+                                        className="nes-input"
+                                        placeholder="0"
+                                        type="number"
+                                        data-name="CatDexterity"
+                                        value={this.state.CatDexterity}
+                                        onChange={this.handleInputChange}
+                                    />
                                 </div>
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="intelligence_field">Cat intelligence</label>
-                                    <input type="number" id="intelligence_field" className="nes-input" value={this.state.CatIntelligence} onChange={this.handleIntelligenceChange} />
+                                    <input
+                                        id="intelligence_field"
+                                        className="nes-input"
+                                        placeholder="0"
+                                        type="number"
+                                        data-name="CatIntelligence"
+                                        value={this.state.CatIntelligence}
+                                        onChange={this.handleInputChange}
+                                    />
                                 </div>
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="cuteness_field">Cat cuteness</label>
-                                    <input type="number" id="cuteness_field" className="nes-input" value={this.state.CatCuteness} onChange={this.handleCutenessChange} />
+                                    <input
+                                        id="cuteness_field"
+                                        className="nes-input"
+                                        placeholder="0"
+                                        type="number"
+                                        data-name="CatCuteness"
+                                        value={this.state.CatCuteness}
+                                        onChange={this.handleInputChange}
+                                    />
                                 </div>
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="evilness_field">Cat evilness</label>
-                                    <input type="number" id="evilness_field" className="nes-input" max="20" value={this.state.CatEvilness} onChange={this.handleEvilnessChange} />
+                                    <input
+                                        id="evilness_field"
+                                        className="nes-input"
+                                        placeholder="0"
+                                        type="number"
+                                        data-name="CatEvilness"
+                                        value={this.state.CatEvilness}
+                                        onChange={this.handleInputChange}
+                                        max="20"
+                                    />
                                 </div>
                                 <label htmlFor="chaos_level">Chaos Level</label>
                                 <div className="nes-select">
-                                    <select value={this.state.ChaosLevel} defaultValue="" id="chaos_level" onChange={this.handleChaosLevelChange}>
+                                    <select
+                                        id="chaos_level"
+                                        value={this.state.ChaosLevel}
+                                        data-name="ChaosLevel"
+                                        defaultValue=""
+                                        onChange={this.handleInputChange}
+                                    >
                                         <option value="" disabled hidden>Choose wisely</option>
                                         <option value="0">Good Boii</option>
                                         <option value="1">Little Devil</option>
@@ -111,7 +139,7 @@ class AddCat extends React.Component {
                                     </select>
                                 </div>
                                 <div className="AddCatButton">
-                                    <button className="nes-btn is-primary" onClick={this.addCat}>Add cat</button>
+                                    <button className="nes-btn is-primary" onClick={this.addCat}>Create cat</button>
                                 </div>
                             </form>
                         </div>

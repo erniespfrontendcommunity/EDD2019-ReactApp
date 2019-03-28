@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import oak from '../assets/images/oak.gif'
-//import pixelCat from '../assets/images/pixelcat.png';
 
 class Lore extends Component {
   render() {
@@ -24,7 +23,6 @@ class Lore extends Component {
             </div>
             <div className="images">
               <img src={oak} className="img-oak" alt="oak" />
-              
             </div>
           </div>
           <h4>In order to complete your Blockchain adventure you need to implement two functionalities:</h4>
@@ -33,7 +31,7 @@ class Lore extends Component {
             <li>Implement a function that creates a cat into the blockchain based on the form on the <code>Create Cat tab</code>:
                 <ul>
                   <li>Your function should take into account the values on the form on send them to the Blockchain.</li>
-                  <li>To start, go to <code>src/pages/AddCat.js</code> fulfill the function called <code>addCat</code>.</li> 
+                  <li>To start, go to <code>src/pages/AddCat.js</code> fulfill the function called <code>addCat</code>.</li>
                 </ul>
             </li>
             <li>Implement a function that gets all our precious cats from the Blockchain:
