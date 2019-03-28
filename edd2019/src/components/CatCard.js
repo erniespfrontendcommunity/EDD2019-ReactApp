@@ -5,7 +5,7 @@ export default class CatCard extends Component {
   render() {
     return (
       <article className="nes-container is-dark with-title CatCard">
-        <h3 className="title">Name: {this.props.name}</h3>
+        <h3 className="title">Name: {this.props.catName}</h3>
         <h3 className="CatCard__prop">Stealth: {this.props.stealth}</h3>
         <h3 className="CatCard__prop">Dexterity: {this.props.dexterity}</h3>
         <h3 className="CatCard__prop">Intelligence: {this.props.intelligence}</h3>

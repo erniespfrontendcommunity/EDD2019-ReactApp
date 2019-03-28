@@ -1,0 +1,7 @@
+.CatSquad__dropable {
+  min-height: 80vh;
+  width: 100%;
+  &--is-table { // CatSquad__dropable--is-table
+    flex-grow: 1;
+  }
+}
