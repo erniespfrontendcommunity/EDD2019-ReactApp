@@ -23,15 +23,19 @@ class AddCat extends React.Component {
         let contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
         let accounts = await web3.eth.getAccounts();
 
-        await contract.methods.addCat(
-            this.state.CatName,
-            this.state.CatStealth,
-            this.state.CatDexterity,
-            this.state.CatIntelligence,
-            this.state.CatCuteness,
-            this.state.CatEvilness,
-            this.state.ChaosLevel)
-            .send({ from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000 })
+        try {
+            await contract.methods.addCat(
+                this.state.CatName,
+                this.state.CatStealth,
+                this.state.CatDexterity,
+                this.state.CatIntelligence,
+                this.state.CatCuteness,
+                this.state.CatEvilness,
+                this.state.ChaosLevel)
+                .send({ from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000 })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     handleInputChange = (event) => {

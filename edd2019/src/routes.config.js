@@ -8,7 +8,7 @@ export const routesMap = {
   },
   CREATE_CAT: {
     path: '/createCat',
-    component: React.lazy(() => import( /* webpackChunkName: "AddCat" */ './pages/AddCat')),
+    component: React.lazy(() => import( /* webpackChunkName: "AddCat" */ './pages/CreateCatForm')),
     label: 'Create Cat'
   },
   CAT_LIST: {
