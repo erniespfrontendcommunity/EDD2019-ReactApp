@@ -38,6 +38,10 @@ class AddCat extends React.Component {
         this.setState({[event.target.dataset.name]: event.target.value });
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
     render() {
         return (
             <section className="AddCat">
@@ -48,7 +52,10 @@ class AddCat extends React.Component {
                             <img src={catRpg} alt="catRpg" />
                         </div>
                         <div className="addCat-form">
-                            <form className="catForm">
+                            <form
+                                className="catForm"
+                                onSubmit={this.handleSubmit}
+                            >
                                 <div className="nes-field margin-botton-10">
                                     <label htmlFor="name_field">Cat Name</label>
                                     <input
