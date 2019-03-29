@@ -39,7 +39,7 @@ class AddCat extends React.Component {
     }
 
     handleInputChange = (event) => {
-        this.setState({[event.target.dataset.name]: event.target.value });
+        this.setState({ [event.target.dataset.name]: event.target.value });
     }
 
     handleSubmit = (event) => {
@@ -60,7 +60,7 @@ class AddCat extends React.Component {
                                 className="catForm"
                                 onSubmit={this.handleSubmit}
                             >
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="name_field">Cat Name</label>
                                     <input
                                         id="name_field"
@@ -73,7 +73,7 @@ class AddCat extends React.Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="stealth_field">Cat stealth</label>
                                     <input
                                         id="stealth_field"
@@ -85,7 +85,7 @@ class AddCat extends React.Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="dexterity_field">Cat dexterity</label>
                                     <input
                                         id="dexterity_field"
@@ -97,7 +97,7 @@ class AddCat extends React.Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="intelligence_field">Cat intelligence</label>
                                     <input
                                         id="intelligence_field"
@@ -109,7 +109,7 @@ class AddCat extends React.Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="cuteness_field">Cat cuteness</label>
                                     <input
                                         id="cuteness_field"
@@ -121,7 +121,7 @@ class AddCat extends React.Component {
                                         onChange={this.handleInputChange}
                                     />
                                 </div>
-                                <div className="nes-field margin-botton-10">
+                                <div className="nes-field">
                                     <label htmlFor="evilness_field">Cat evilness</label>
                                     <input
                                         id="evilness_field"

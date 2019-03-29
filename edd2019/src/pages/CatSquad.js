@@ -10,6 +10,12 @@ import CatCard from '../components/CatCard.js';
 const INITAL_STATE = {
   cats: [],
   selected: [],
+  squadName: ''
+}
+
+const colors = {
+    green: '#92cc41',
+    red: '#d96d6d',
 }
 
 const INITIAL_BACKGROUND_COLORS = {
@@ -29,11 +35,8 @@ const ZONES_MAPPED_TO_STATE = {
 
 class CatSquad extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            ...INITAL_STATE
-        }
+    state = {
+        ...INITAL_STATE
     }
 
     // @TODO inut para el nombre del squad
@@ -103,15 +106,21 @@ class CatSquad extends Component {
         backgroundColor: 'grey,',
 
         // change opacity if dragging
-        opacity: isDragging ? .7 : 1,
+        opacity: isDragging ? '.7' : '1',
 
         // styles applied by the library options
         ...draggableStyle
     });
 
-    getListStyle = (isDraggingOver, zone) => ({
-        background: isDraggingOver ? 'lightblue' : INITIAL_BACKGROUND_COLORS[zone],
-    });
+    getListStyle = (isDraggingOver, zone) => {
+        let conditionalFinalColor = INITIAL_BACKGROUND_COLORS[zone];
+        if (zone === DROP_ZONES.FINAL && this.state.selected.length === Config.catsPerSquad) {
+            conditionalFinalColor = colors.green;
+        }
+        return {
+            background: isDraggingOver ? 'lightblue' : conditionalFinalColor,
+        }
+    };
 
     getCurrentList = (id) => this.state[ZONES_MAPPED_TO_STATE[id]];
 
@@ -159,9 +168,34 @@ class CatSquad extends Component {
         }
     };
 
+    handleInputChange = (event) => {
+        this.setState({ squadName: event.target.value });
+    }
+
+    // @TODO
+    sendToLeague = () => {}
+
     render() {
+        const isFull = this.state.selected.length === Config.catsPerSquad;
         return (
             <div className="CatSquad flex flex-col">
+                <div className="nes-field">
+                    <label htmlFor="squadName_field">Squad Name To Be Displayed in The League</label>
+                    <input
+                        id="squadName_field"
+                        placeholder="Squad Name..."
+                        className="nes-input CatSquad__input"
+                        value={this.state.squadName}
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <button
+                        className={ 'nes-btn CatSquad__button' + (isFull ? ' is-success' : '') }
+                        disabled={isFull}
+                        onClick={this.sendToLeague}
+                        type="button"
+                    >Send To league</button>
+                </div>
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <Droppable droppableId={DROP_ZONES.FINAL} direction="horizontal">
                         {(provided, snapshot) => (
@@ -171,7 +205,7 @@ class CatSquad extends Component {
                                     flex justify-content-center
                                     align-items-center
                                 "
-                                style={this.getListStyle(snapshot.isDraggingOver)}
+                                style={this.getListStyle(snapshot.isDraggingOver, DROP_ZONES.FINAL)}
                             >
                                 {
                                     this.state.selected.length
@@ -192,7 +226,7 @@ class CatSquad extends Component {
                                                                 provided.draggableProps.style
                                                             )}>
                                                             <CatCard
-                                                                catName={cat.namame}
+                                                                catName={cat.name}
                                                                 stealth={cat.stealth}
                                                                 dexterity={cat.dexterity}
                                                                 intelligence={cat.intelligence}
@@ -240,7 +274,7 @@ class CatSquad extends Component {
                                                                 provided.draggableProps.style
                                                             )}>
                                                             <CatCard
-                                                                catName={cat.namame}
+                                                                catName={cat.name}
                                                                 stealth={cat.stealth}
                                                                 dexterity={cat.dexterity}
                                                                 intelligence={cat.intelligence}

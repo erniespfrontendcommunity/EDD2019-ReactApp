@@ -34,7 +34,10 @@ class Classification extends React.Component {
     render() {
         return (
             <div className="Classification">
-                <button onClick={this.getClassification}>Get classification</button>
+                <button
+                    className="nes-btn is-success"
+                    onClick={this.getClassification}
+                >Get classification</button>
             </div>
         );
     }
