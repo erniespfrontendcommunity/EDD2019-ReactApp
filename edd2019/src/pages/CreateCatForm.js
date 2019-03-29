@@ -19,23 +19,44 @@ class AddCat extends React.Component {
         }
     }
 
-    addCat = async () => {
+    addCat = async ({
+        CatName,
+        CatStealth,
+        CatDexterity,
+        CatIntelligence,
+        CatCuteness,
+        CatEvilness,
+        ChaosLevel
+    }) => {
         // Metamask insert web3 object into window object when the account is unlocked
-        var web3 = new Web3(window.web3.currentProvider);
-        let contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
-        let accounts = await web3.eth.getAccounts();
+        let web3 = new Web3(window.web3.currentProvider);
 
+        // Creates a contract from the web3 instance with
+        // the following parameters (CatABI Config.CatContractAddress)
+        
+        // eslint-disable-next-line no-unused-vars
+        let contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
+
+        // Gets accounts from the web3 instance
+        let accounts = await web3.eth.getAccounts();
+        
+        /* 
+            This parameter is providing the 'from' (which local account is sending the ether), the quantity of ether sent, and the gas limit required for the operaton
+        */
+        // eslint-disable-next-line no-unused-vars
+        let sendParameter = { from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000};
+
+
+        /*
+            The following try/catch is the responsible of calling the blockchain
+            with the correct parameters.
+            Call the method within the contract called addCat suplying the correct parameters (CatName, CatStealth, etc.).
+            Pro tip: Provide the parameter in the same order as are supplied.
+
+            Then call the send method using the sendParaments variable.
+        */
         try {
-            await contract.methods.addCat(
-                this.state.CatName,
-                this.state.CatStealth,
-                this.state.CatDexterity,
-                this.state.CatIntelligence,
-                this.state.CatCuteness,
-                this.state.CatEvilness,
-                this.state.ChaosLevel
-            )
-                .send({ from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000 })
+            // Call addCat here
         } catch (error) {
             console.log(error)
         }
@@ -180,7 +201,7 @@ class AddCat extends React.Component {
                                 </div>
                                 <RemainingStats {...this.state}/>
                                 <div className="AddCatButton">
-                                    <button className="nes-btn is-primary" onClick={this.addCat}>Create cat</button>
+                                    <button className="nes-btn is-primary" onClick={this.addCat(this.state)}>Create cat</button>
                                 </div>
                             </form>
                         </div>
