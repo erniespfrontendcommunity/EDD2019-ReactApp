@@ -45,7 +45,7 @@ class CatSquad extends Component {
         await this.getCatList();
     }
 
-    async getCatList() {
+    getCatList = async () => {
         // Metamask insert web3 object into window object when the account is unlocked
         const web3 = new Web3(window.web3.currentProvider);
         const contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
@@ -214,7 +214,8 @@ class CatSquad extends Component {
                             <div
                                 ref={provided.innerRef}
                                 className="CatSquad__dropable CatSquad__dropable--is-table
-                                    flex justify-content-center
+                                    flex
+                                    justify-content-center
                                     align-items-center
                                 "
                                 style={this.getListStyle({...snapshot}, DROP_ZONES.FINAL)}
@@ -267,7 +268,8 @@ class CatSquad extends Component {
                             <div
                                 ref={provided.innerRef}
                                 className="CatSquad__dropable CatSquad__dropable--is-deck
-                                    flex justify-content-center
+                                    flex
+                                    justify-content-center
                                     align-items-center
                                 "
                                 style={this.getListStyle({...snapshot}, DROP_ZONES.INITIAL)}
