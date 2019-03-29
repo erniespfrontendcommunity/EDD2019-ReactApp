@@ -1,0 +1,30 @@
+.Classification {
+  .titleContainer {
+    color: black;
+  }
+
+  .table-container{
+    display: flex;
+    justify-content: center;
+
+    .nes-table {
+      width: 80%;
+      tr {
+        color: black;
+      }
+      td: {
+        color: black;
+      }
+    }
+  }
+
+  .componentFooter {
+    margin-top: 20px;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    img {
+      width: 100px;
+    }
+  }
+}
