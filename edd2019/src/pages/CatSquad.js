@@ -201,8 +201,11 @@ class CatSquad extends Component {
                         required
                     />
                     <button
-                        className={ 'nes-btn CatSquad__button' + (isFull ? ' is-success' : '') }
-                        disabled={!isFull}
+                        className={
+                            'nes-btn CatSquad__button'
+                            + ((isFull && this.state.squadName) ? ' is-success' : '')
+                        }
+                        disabled={!isFull || !this.state.squadName}
                         onClick={this.sendToLeague}
                         type="button"
                     >

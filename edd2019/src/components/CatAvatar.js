@@ -33,7 +33,7 @@ export default class CatAvatar extends Component {
   }
 
   setColor = (props) => {
-    const color = gGetAvatarColor('' + (props.cuteness * props.evilness * props.stealth) + props.catName)
+    const color = gGetAvatarColor(props.catName)
     return color
   }
 

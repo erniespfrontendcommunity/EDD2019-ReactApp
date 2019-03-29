@@ -23,7 +23,7 @@ export default class CatCard extends PureComponent {
       <article className="nes-container is-dark with-title CatCard">
         <h3 className="title">Name: {cat.catName}</h3>
         <CatAvatar
-          catName={cat.name}
+          catName={cat.catName}
           stealth={cat.stealth}
           dexterity={cat.dexterity}
           intelligence={cat.intelligence}
