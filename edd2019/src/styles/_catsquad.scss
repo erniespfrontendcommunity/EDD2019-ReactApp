@@ -1,0 +1,21 @@
+.CatSquad__dropable {
+  min-height: 20vh;
+  width: 100%;
+  &--is-table { // CatSquad__dropable--is-table
+    flex-grow: 1;
+    margin-top: 3vh;
+    min-height: 47vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+}
+
+:root .CatSquad__input {
+  display: inline-block;
+  width: 80vw;
+}
+
+.CatSquad__button {
+  display: inline-block;
+  width: 18vw;
+}

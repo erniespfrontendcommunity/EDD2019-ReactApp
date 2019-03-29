@@ -60,8 +60,8 @@ class Classification extends React.Component {
                         <img src={pixelCat} alt="pixelCat" />
                         <button className="nes-btn is-primary" onClick={this.getClassification}>Get classification</button>
                         <img src={pixelCat} alt="pixelCat" />
-                    </div>     
-                </div>         
+                    </div>
+                </div>
             </div>
         );
     }

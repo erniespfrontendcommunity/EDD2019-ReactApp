@@ -8,7 +8,7 @@ export const routesMap = {
   },
   CREATE_CAT: {
     path: '/createCat',
-    component: React.lazy(() => import( /* webpackChunkName: "AddCat" */ './pages/AddCat')),
+    component: React.lazy(() => import( /* webpackChunkName: "AddCat" */ './pages/CreateCatForm')),
     label: 'Create Cat'
   },
   CAT_LIST: {
@@ -20,10 +20,5 @@ export const routesMap = {
     path: '/playLeague',
     component: React.lazy(() => import( /* webpackChunkName: "PlayLeague" */ './pages/PlayLeague')),
     label: 'Play Cat League'
-  },
-  TEST: {
-    path: '/test',
-    component: React.lazy(() => import( /* webpackChunkName: "SandBox" */ './pages/SandBox')),
-    label: 'Sandbox'
   },
 }

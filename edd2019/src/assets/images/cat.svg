@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 270.9 595.3 633" enable-background="new 0 270.9 595.3 633" xml:space="preserve">
+<path id="body" fill="#82368C" d="M495.4,376H99.9C70.7,376,47,394.9,47,418.2v401c0,23.3,23.7,42.2,52.9,42.2h395.4
+	c29.2,0,52.9-18.9,52.9-42.2v-401C548.3,394.9,524.5,376,495.4,376z"/>
+<path id="ear2" fill="#82368C" d="M359,440.7c66-136.5,85.7-113.4,91.8-107.4c13.8,13.8,44.7,107.4,44.7,107.4H359z"/>
+<path id="ear1" fill="#82368C" d="M236.4,440.7c-66-136.5-85.7-113.4-91.8-107.4c-13.8,13.8-44.7,107.4-44.7,107.4H236.4z"/>
+<ellipse id="eye1" fill="#282828" cx="168.2" cy="521.2" rx="32.1" ry="31.1"/>
+<ellipse id="eye2" fill="#282828" cx="427.2" cy="521.2" rx="32.1" ry="31.1"/>
+<ellipse id="bright-eye2" fill="#EFEFEF" cx="437.3" cy="507.4" rx="6.3" ry="6.2"/>
+<ellipse id="bright-eye1" fill="#EFEFEF" cx="178.3" cy="507.4" rx="6.3" ry="6.2"/>
+<rect id="eye-lip1" x="126.7" y="450.4" transform="matrix(0.9787 0.2055 -0.2055 0.9787 100.1473 -26.2169)" fill="#82368C" width="99.2" height="37.2"/>
+<rect id="eye-lip2" x="373.9" y="447.4" transform="matrix(-0.9787 0.2055 -0.2055 -0.9787 933.7286 834.9517)" fill="#82368C" width="99.2" height="37.2"/>
+<path id="tongue" fill="#D979AF" d="M272.4,711.4v47.5c0,14,11.3,25.3,25.3,25.3c14,0,25.3-11.3,25.3-25.3v-47.5H272.4z"/>
+<path id="nose" fill="#EFEFEF" d="M340.8,606.2c0-7.7-33.9-10.6-43-10.3c-9-0.3-43,2.6-43,10.3c0,20.2,34.3,40,43,40
+	C306.5,646.1,340.8,626.4,340.8,606.2z"/>
+<ellipse id="tongue-cover2" fill="#82368C" cx="352" cy="700" rx="60.3" ry="58.6"/>
+<ellipse id="tongue-cover1" fill="#82368C" cx="244.5" cy="700" rx="57.5" ry="55.9"/>
+<path id="mouth" fill="#EFEFEF" d="M392.3,708.7c-0.1,24.8-20.3,44.7-45.1,44.7c-24.8,0-45.1-20.2-45.1-45.1
+	c0-13.1-0.1-70.6-0.1-70.6h-8.6c0,0,0,57.5,0,70.6c0,24.8-20.2,45.1-45.1,45.1c-24.8,0-45-20-45.1-44.7c-2.9,0.5-5.8,1.5-8.6,2.5
+	c1.5,28.4,25.1,50.9,53.7,50.9c22.2,0,41.3-13.5,49.5-32.7c8.2,19.3,27.3,32.7,49.5,32.7c28.8,0,52.2-22.6,53.7-50.9
+	C398.2,710.3,395.2,709.3,392.3,708.7z"/>
+<ellipse id="mouth-cover1" fill="#82368C" cx="196.7" cy="659.7" rx="57.5" ry="55.9"/>
+<ellipse id="mouth-cover2" fill="#82368C" cx="398.7" cy="659.7" rx="60.3" ry="58.6"/>
+<g id="bigot">
+	
+		<rect x="143.7" y="615" transform="matrix(-0.1096 -0.994 0.994 -0.1096 -481.6141 868.1615)" fill="#EFEFEF" width="8.6" height="69.6"/>
+	
+		<rect x="143.7" y="580" transform="matrix(0.2605 -0.9655 0.9655 0.2605 -484.1574 597.5029)" fill="#EFEFEF" width="8.6" height="69.6"/>
+	
+		<rect x="443.2" y="614.8" transform="matrix(0.1096 -0.994 0.994 0.1096 -247.3149 1023.2092)" fill="#EFEFEF" width="8.6" height="69.6"/>
+	
+		<rect x="443.1" y="580" transform="matrix(-0.2605 -0.9655 0.9655 -0.2605 -29.5934 1206.8995)" fill="#EFEFEF" width="8.6" height="69.6"/>
+</g>
+</svg>

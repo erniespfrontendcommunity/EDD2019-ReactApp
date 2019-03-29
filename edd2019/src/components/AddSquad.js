@@ -11,7 +11,8 @@ class AddSquad extends React.Component {
         const leagueAddress = Config.LeagueContractAddress;
         let contract = new web3.eth.Contract(leagueABI, leagueAddress);
         let accounts = await web3.eth.getAccounts();
-        await contract.methods.addCat("squad1", 0, 1, 2).send({ from: accounts[0], gas: 600000 });
+        const personalAccount = accounts[0];
+        await contract.methods.addCat("squad1", 0, 1, 2).send({ from: personalAccount, gas: 600000 });
     }
 
     render() {

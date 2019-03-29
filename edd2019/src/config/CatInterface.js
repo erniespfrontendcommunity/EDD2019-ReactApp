@@ -5,6 +5,7 @@ export const ChaosLevels = {
 };
 
 export class CatAttr {
+  // do not change order of params, please :)
   constructor(name, stealth, dexterity, intelligence, cuteness, evilness, chaosLevel) {
       this.name = name;
       this.stealth = stealth;
