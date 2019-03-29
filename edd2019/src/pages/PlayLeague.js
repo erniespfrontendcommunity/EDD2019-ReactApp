@@ -11,12 +11,16 @@ class PlayLeague extends React.Component {
         var web3 = new Web3(window.web3.currentProvider);
         let contract = new web3.eth.Contract(leagueABI, Config.LeagueContractAddress);
         let accounts = await web3.eth.getAccounts();
-        await contract.methods.playLeague().send({ from: accounts[0], gas: 600000 });
+        try {
+            await contract.methods.playLeague().send({ from: accounts[0], gas: 600000 });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {
         return (
-            <section className="PlayLeague"> 
+            <section className="PlayLeague">
                 <Classification></Classification>
                 <button className="nes-btn is-primary" onClick={this.playLeague}>Play league</button>
             </section>

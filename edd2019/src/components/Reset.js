@@ -11,7 +11,11 @@ class ResetLeague extends React.Component {
         const leagueAddress = Config.LeagueContractAddress;
         let contract = new web3.eth.Contract(leagueABI, leagueAddress);
         let accounts = await web3.eth.getAccounts();
-        await contract.methods.resetLeague().send({ from: accounts[0], gas: 600000 });
+        try {
+            await contract.methods.resetLeague().send({ from: accounts[0], gas: 600000 });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {

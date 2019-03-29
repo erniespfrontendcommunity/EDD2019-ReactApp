@@ -43,7 +43,11 @@ class CatSquad extends Component {
     // @TODO inut para el nombre del squad
 
     async componentWillMount() {
-        await this.getCatList();
+        try {
+            await this.getCatList();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     getCatList = async () => {
@@ -54,19 +58,23 @@ class CatSquad extends Component {
         const personalAccount = accounts[0];
         const numberOfCats = await contract.methods.balanceOf(personalAccount).call();
 
-        for (var i = 0; i < numberOfCats; ++i) {
-            let tokenUid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
-            let catAttr = await contract.methods.getCatAttributes(tokenUid).call();
-            this.catsToState(new CatAttr(
-                catAttr.catName,
-                catAttr.stealth,
-                catAttr.dexterity,
-                catAttr.intelligence,
-                catAttr.cuteness,
-                catAttr.evilness,
-                catAttr.chaosLevel,
-                tokenUid
-            ));
+        try {
+            for (var i = 0; i < numberOfCats; ++i) {
+                let tokenUid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
+                let catAttr = await contract.methods.getCatAttributes(tokenUid).call();
+                this.catsToState(new CatAttr(
+                    catAttr.catName,
+                    catAttr.stealth,
+                    catAttr.dexterity,
+                    catAttr.intelligence,
+                    catAttr.cuteness,
+                    catAttr.evilness,
+                    catAttr.chaosLevel,
+                    tokenUid
+                ));
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 

@@ -33,14 +33,14 @@ class AddCat extends React.Component {
 
         // Creates a contract from the web3 instance with
         // the following parameters (CatABI Config.CatContractAddress)
-        
+
         // eslint-disable-next-line no-unused-vars
         let contract = new web3.eth.Contract(catABI, Config.CatContractAddress);
 
         // Gets accounts from the web3 instance
         let accounts = await web3.eth.getAccounts();
-        
-        /* 
+
+        /*
             This parameter is providing the 'from' (which local account is sending the ether), the quantity of ether sent, and the gas limit required for the operaton
         */
         // eslint-disable-next-line no-unused-vars
@@ -58,14 +58,14 @@ class AddCat extends React.Component {
         try {
             // Call addCat here
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
 
     handleInputChange = (event) => {
         this.setState({
             [event.target.dataset.name]: event.target.value,
-        }); 
+        });
     }
 
     handleSubmit = (event) => {
@@ -201,7 +201,7 @@ class AddCat extends React.Component {
                                 </div>
                                 <RemainingStats {...this.state}/>
                                 <div className="AddCatButton">
-                                    <button className="nes-btn is-primary" onClick={this.addCat(this.state)}>Create cat</button>
+                                    <button className="nes-btn is-primary" onClick={() => this.addCat(this.state)}>Create cat</button>
                                 </div>
                             </form>
                         </div>

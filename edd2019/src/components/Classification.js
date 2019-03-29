@@ -18,26 +18,30 @@ class Classification extends React.Component {
         var web3 = new Web3(window.web3.currentProvider);
         let contract = new web3.eth.Contract(leagueABI, Config.LeagueContractAddress);
         let classification = [];
-        let numberOfParticipants = await contract.methods.getTotalParticipants().call();
-        for (var i = 0; i < numberOfParticipants; ++i) {
-            let participantAddress = await contract.methods.getParticipant(i).call();
-            let squadName = await contract.methods.getSquadName(participantAddress).call();
-            let points = await contract.methods.points(participantAddress).call();
-            classification.push(new ClassificationList(participantAddress, squadName, points));
+        try {
+            let numberOfParticipants = await contract.methods.getTotalParticipants().call();
+            for (var i = 0; i < numberOfParticipants; ++i) {
+                let participantAddress = await contract.methods.getParticipant(i).call();
+                let squadName = await contract.methods.getSquadName(participantAddress).call();
+                let points = await contract.methods.points(participantAddress).call();
+                classification.push(new ClassificationList(participantAddress, squadName, points));
+            }
+            classification.sort(function(memberA, memberB){
+                return memberB.points - memberA.points;
+            });
+
+            this.classificationTable.innerHTML = "";
+
+            classification.forEach((squad, index) => {
+                let row = this.classificationTable.insertRow(index);
+                let newCellLeft = row.insertCell(0);
+                let newCellRight = row.insertCell(1);
+                newCellLeft.innerHTML = squad.name;
+                newCellRight.innerHTML = squad.points;
+            })
+        } catch (error) {
+            console.log(error);
         }
-        classification.sort(function(memberA, memberB){
-            return memberB.points - memberA.points;
-        });
-
-        this.classificationTable.innerHTML = "";
-
-        classification.forEach((squad, index) => {
-            let row = this.classificationTable.insertRow(index);
-            let newCellLeft = row.insertCell(0);
-            let newCellRight = row.insertCell(1);
-            newCellLeft.innerHTML = squad.name;
-            newCellRight.innerHTML = squad.points;
-        })
     }
 
     render() {
