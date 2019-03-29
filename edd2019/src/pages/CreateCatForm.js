@@ -2,7 +2,8 @@ import React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
 import { Config } from "../config/Config";
-import catRpg from '../assets/images/addCat.jpg';
+
+import CatAvatar from '../components/CatAvatar'
 
 class AddCat extends React.Component {
     constructor() {
@@ -31,7 +32,8 @@ class AddCat extends React.Component {
                 this.state.CatIntelligence,
                 this.state.CatCuteness,
                 this.state.CatEvilness,
-                this.state.ChaosLevel)
+                this.state.ChaosLevel
+            )
                 .send({ from: accounts[0], value: web3.utils.toWei("0.1", "ether"), gas: 600000 })
         } catch (error) {
             console.log(error)
@@ -53,7 +55,16 @@ class AddCat extends React.Component {
                     <p className="title titleContainer">Create your cat</p>
                     <div className="addCat-container-content">
                         <div className="nes-container is-rounded">
-                            <img src={catRpg} alt="catRpg" />
+                            <CatAvatar
+                                height="560px"
+                                catName={this.state.CatName}
+                                stealth={this.state.CatStealth}
+                                dexterity={this.state.CatDexterity}
+                                intelligence={this.state.CatIntelligence}
+                                cuteness={this.state.CatCuteness}
+                                evilness={this.state.CatEvilness}
+                                chaosLevel={this.state.ChaosLevel}
+                            ></CatAvatar>
                         </div>
                         <div className="addCat-form">
                             <form
@@ -80,6 +91,8 @@ class AddCat extends React.Component {
                                         className="nes-input"
                                         placeholder="0"
                                         type="number"
+                                        min="0"
+                                        max="20"
                                         data-name="CatStealth"
                                         value={this.state.CatStealth}
                                         onChange={this.handleInputChange}
@@ -92,6 +105,8 @@ class AddCat extends React.Component {
                                         className="nes-input"
                                         placeholder="0"
                                         type="number"
+                                        min="0"
+                                        max="20"
                                         data-name="CatDexterity"
                                         value={this.state.CatDexterity}
                                         onChange={this.handleInputChange}
@@ -104,6 +119,8 @@ class AddCat extends React.Component {
                                         className="nes-input"
                                         placeholder="0"
                                         type="number"
+                                        min="0"
+                                        max="20"
                                         data-name="CatIntelligence"
                                         value={this.state.CatIntelligence}
                                         onChange={this.handleInputChange}
@@ -116,6 +133,8 @@ class AddCat extends React.Component {
                                         className="nes-input"
                                         placeholder="0"
                                         type="number"
+                                        min="0"
+                                        max="20"
                                         data-name="CatCuteness"
                                         value={this.state.CatCuteness}
                                         onChange={this.handleInputChange}
@@ -128,10 +147,11 @@ class AddCat extends React.Component {
                                         className="nes-input"
                                         placeholder="0"
                                         type="number"
+                                        min="0"
+                                        max="20"
                                         data-name="CatEvilness"
                                         value={this.state.CatEvilness}
                                         onChange={this.handleInputChange}
-                                        max="20"
                                     />
                                 </div>
                                 <label htmlFor="chaos_level">Chaos Level</label>

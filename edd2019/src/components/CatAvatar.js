@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import gGetAvatarColor from '@graficos/avatar-color';
 
 const attributesToFacialFeaturesMap = {
   ears: 'stealth',
@@ -9,16 +10,43 @@ const attributesToFacialFeaturesMap = {
 }
 
 export default class CatAvatar extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      color: this.setColor(props)
+    }
+  }
+
+  componentDidUpdate(oldProps) {
+    if (
+      oldProps
+      && (this.props.catName !== oldProps.catName
+        || this.props.cuteness !== oldProps.cuteness
+        || this.props.evilness !== oldProps.evilness
+        || this.props.stealth !== oldProps.stealth)
+    ) {
+      this.setState({
+        color: this.setColor(this.props)
+      })
+    }
+  }
+
+  setColor = (props) => {
+    const color = gGetAvatarColor('' + (props.cuteness * props.evilness * props.stealth) + props.catName)
+    return color
+  }
+
   /**
    * Gets a value between the max and the min provided.
    * Factor is a value from 0 to 20
    * all values will be inversely related
   */
   inRangeValue = (min, max, factor) => {
-    factor = (!isNaN(factor) && factor !== null && factor !== undefined) ? factor : 0
-    return max - Math.abs((max - min) / 20) * factor;
+    factor = factor || 1;
+    const calc = ((max - min) / factor) + min;
+    return isFinite(calc) ? calc : max;
   }
-
 
   render() {
     return (
@@ -35,20 +63,20 @@ export default class CatAvatar extends Component {
           <feTurbulence
             type="turbulence"
             baseFrequency="0.05"
-            numOctaves={this.props[attributesToFacialFeaturesMap.distortion]}
+            numOctaves={this.props[attributesToFacialFeaturesMap.distortion] || 0}
             result="turbulence"
           />
           <feDisplacementMap
             in2="turbulence"
             in="SourceGraphic"
-            scale={this.inRangeValue(0, 20, this.props[attributesToFacialFeaturesMap.distortion])}
+            scale={this.inRangeValue(0, 20, this.props[attributesToFacialFeaturesMap.distortion]) || 1}
             xChannelSelector="R"
             yChannelSelector="G"
           />
         </filter>
         <path
           className="cat-body"
-          fill={this.props.color}
+          fill={this.state.color}
           style={{
             filter: 'url(#displacementFilter)'
           }}
@@ -57,21 +85,21 @@ export default class CatAvatar extends Component {
         />
         <path
           className="ear2"
-          fill={this.props.color}
+          fill={this.state.color}
           style={{
             filter: 'url(#displacementFilter)'
           }}
           d="M359,356.2c66-136.5,85.7-113.4,91.8-107.4c13.8,13.8,44.7,107.4,44.7,107.4H359z"
-          transform={'translate(0, ' + this.inRangeValue(0, -30, this.props[attributesToFacialFeaturesMap.ears]) + ')'}
+          transform={'translate(0, ' + this.inRangeValue(-30, 0, this.props[attributesToFacialFeaturesMap.ears]) + ')'}
         />
         <path
           className="ear1"
-          fill={this.props.color}
+          fill={this.state.color}
           style={{
             filter: 'url(#displacementFilter)'
           }}
           d="M236.4,356.2c-66-136.5-85.7-113.4-91.8-107.4c-13.8,13.8-44.7,107.4-44.7,107.4H236.4z"
-          transform={'translate(0, ' + this.inRangeValue(0, -30, this.props[attributesToFacialFeaturesMap.ears]) + ')'}
+          transform={'translate(0, ' + this.inRangeValue(-30, 0, this.props[attributesToFacialFeaturesMap.ears]) + ')'}
         />
         <ellipse
           className="eye1"
@@ -108,11 +136,11 @@ export default class CatAvatar extends Component {
         <rect
           className="eye-lip1" x="126.7" y="450.4"
           transform={
-            'matrix(0.9787 0.2055 -0.2055 0.9787 100.1473 -' +
-            this.inRangeValue(26, 86, this.props[attributesToFacialFeaturesMap.eyeLips]) +
+            'matrix(0.9787 0.2055 -0.2055 0.9787 100.1473 ' +
+            this.inRangeValue(-120, -86, this.props[attributesToFacialFeaturesMap.eyeLips]) +
             ')'
           }
-          fill={this.props.color}
+          fill={this.state.color}
           width="99.2"
           height="37.2"
         />
@@ -120,10 +148,10 @@ export default class CatAvatar extends Component {
           className="eye-lip2" x="373.9" y="362.9"
           transform={
             'matrix(0.9787 -0.2055 0.2055 0.9787 -69.3557 ' +
-            this.inRangeValue(95, 130, this.props[attributesToFacialFeaturesMap.eyeLips]) +
+            this.inRangeValue(95, 120, this.props[attributesToFacialFeaturesMap.eyeLips]) +
             ')'
           }
-          fill={this.props.color}
+          fill={this.state.color}
           width="99.2"
           height="37.2"
         />
@@ -132,7 +160,7 @@ export default class CatAvatar extends Component {
           fill="#D979AF"
           transform={
             'translate(0, ' +
-            this.inRangeValue(-30, 20, this.props[attributesToFacialFeaturesMap.tongue]) +
+            this.inRangeValue(-20, 0, this.props[attributesToFacialFeaturesMap.tongue]) +
             ')'
           }
           d="M272.4,627v47.5c0,14,11.3,25.3,25.3,25.3c14,0,25.3-11.3,25.3-25.3V627H272.4z"
@@ -145,14 +173,14 @@ export default class CatAvatar extends Component {
         />
         <ellipse
           className="tongue-cover2"
-          fill={this.props.color} cx="352"
+          fill={this.state.color} cx="352"
           cy="615.6"
           rx="60.3"
           ry="58.6"
         />
         <ellipse
           className="tongue-cover1"
-          fill={this.props.color} cx="244.5"
+          fill={this.state.color} cx="244.5"
           cy="615.6"
           rx="57.5"
           ry="55.9"
@@ -167,12 +195,12 @@ export default class CatAvatar extends Component {
         />
         <ellipse
           className="mouth-cover1"
-          fill={this.props.color}
+          fill={this.state.color}
           cx="196.7"
           cy={
             this.inRangeValue(
-              575.3,
-              645.3,
+              575,
+              605,
               (((this.props[attributesToFacialFeaturesMap.smile[0]] +
                 this.props[attributesToFacialFeaturesMap.smile[1]]) || 1) / 2)
             )
@@ -182,12 +210,12 @@ export default class CatAvatar extends Component {
         />
         <ellipse
           className="mouth-cover2"
-          fill={this.props.color}
+          fill={this.state.color}
           cx="398.7"
           cy={
             this.inRangeValue(
-              575.3,
-              645.3,
+              575,
+              605,
               (((this.props[attributesToFacialFeaturesMap.smile[0]] +
                 this.props[attributesToFacialFeaturesMap.smile[1]]) || 1) / 2)
             )
