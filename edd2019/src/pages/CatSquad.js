@@ -112,13 +112,15 @@ class CatSquad extends Component {
         ...draggableStyle
     });
 
-    getListStyle = (isDraggingOver, zone) => {
+    getListStyle = ({isDraggingOver, draggingFromThisWith}, zone) => {
+        let conditionalDraggingColor = 'lightblue';
         let conditionalFinalColor = INITIAL_BACKGROUND_COLORS[zone];
-        if (zone === DROP_ZONES.FINAL && this.state.selected.length === Config.catsPerSquad) {
+        if (!draggingFromThisWith && zone === DROP_ZONES.FINAL && this.state.selected.length === Config.catsPerSquad) {
             conditionalFinalColor = colors.green;
+            conditionalDraggingColor = colors.red;
         }
         return {
-            background: isDraggingOver ? 'lightblue' : conditionalFinalColor,
+            background: isDraggingOver ? conditionalDraggingColor : conditionalFinalColor,
         }
     };
 
@@ -180,10 +182,10 @@ class CatSquad extends Component {
         return (
             <div className="CatSquad flex flex-col">
                 <div className="nes-field">
-                    <label htmlFor="squadName_field">Squad Name To Be Displayed in The League</label>
+                    <label htmlFor="squadName_field">Squad Name To Be Displayed in The League *</label>
                     <input
                         id="squadName_field"
-                        placeholder="Squad Name..."
+                        placeholder="(Mandatory) Squad Name..."
                         className="nes-input CatSquad__input"
                         value={this.state.squadName}
                         onChange={this.handleInputChange}
@@ -194,10 +196,20 @@ class CatSquad extends Component {
                         disabled={isFull}
                         onClick={this.sendToLeague}
                         type="button"
-                    >Send To league</button>
+                    >
+                        {
+                            isFull ? <span role="img" aria-label="ok emoji">👌🏾</span> : null
+                        }
+                        <span>
+                            Send To league
+                        </span>
+                    </button>
                 </div>
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Droppable droppableId={DROP_ZONES.FINAL} direction="horizontal">
+                    <Droppable
+                        droppableId={DROP_ZONES.FINAL}
+                        direction="horizontal"
+                    >
                         {(provided, snapshot) => (
                             <div
                                 ref={provided.innerRef}
@@ -205,7 +217,7 @@ class CatSquad extends Component {
                                     flex justify-content-center
                                     align-items-center
                                 "
-                                style={this.getListStyle(snapshot.isDraggingOver, DROP_ZONES.FINAL)}
+                                style={this.getListStyle({...snapshot}, DROP_ZONES.FINAL)}
                             >
                                 {
                                     this.state.selected.length
@@ -239,7 +251,12 @@ class CatSquad extends Component {
                                                 </Draggable>
                                                 )
                                             })
-                                            : null
+                                            : snapshot.isDraggingOver ? null : (
+                                                <p>
+                                                    Drop here...
+                                                    <span role="img" aria-label="cat emoji">🐱</span>
+                                                </p>
+                                            )
                                 }
                                 {provided.placeholder}
                             </div>
@@ -253,7 +270,7 @@ class CatSquad extends Component {
                                     flex justify-content-center
                                     align-items-center
                                 "
-                                style={this.getListStyle(snapshot.isDraggingOver, DROP_ZONES.INITIAL)}
+                                style={this.getListStyle({...snapshot}, DROP_ZONES.INITIAL)}
                             >
                                 {
                                     this.state.cats.length ?
