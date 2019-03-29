@@ -5,6 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { CatAttr } from '../config/CatInterface.js';
 import catABI from "../contractsBin/cat.json";
 import { Config } from "../config/Config";
+import leagueABI from "../contractsBin/league.json";
 import CatCard from '../components/CatCard.js';
 
 const INITAL_STATE = {
@@ -54,9 +55,8 @@ class CatSquad extends Component {
         const numberOfCats = await contract.methods.balanceOf(personalAccount).call();
 
         for (var i = 0; i < numberOfCats; ++i) {
-            let tokenuid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
-            let catAttr = await contract.methods.getCatAttributes(tokenuid).call();
-            // console.log(catAttr);
+            let tokenUid = await contract.methods.tokenOfOwnerByIndex(personalAccount, i).call();
+            let catAttr = await contract.methods.getCatAttributes(tokenUid).call();
             this.catsToState(new CatAttr(
                 catAttr.catName,
                 catAttr.stealth,
@@ -64,7 +64,8 @@ class CatSquad extends Component {
                 catAttr.intelligence,
                 catAttr.cuteness,
                 catAttr.evilness,
-                catAttr.chaosLevel
+                catAttr.chaosLevel,
+                tokenUid
             ));
         }
     }
@@ -174,8 +175,16 @@ class CatSquad extends Component {
         this.setState({ squadName: event.target.value });
     }
 
-    // @TODO
-    sendToLeague = () => {}
+    sendToLeague = async () => {
+        // Metamask insert web3 object into window object when the account is unlocked
+        const ids = this.state.selected.map(cat => Number(cat.tokenUid))
+        const web3 = new Web3(window.web3.currentProvider);
+        const leagueAddress = Config.LeagueContractAddress;
+        let contract = new web3.eth.Contract(leagueABI, leagueAddress);
+        let accounts = await web3.eth.getAccounts();
+        const personalAccount = accounts[0];
+        await contract.methods.addSquad(this.state.squadName, ...ids).send({ from: personalAccount, gas: 600000 });
+    }
 
     render() {
         const isFull = this.state.selected.length === Config.catsPerSquad;
@@ -193,7 +202,7 @@ class CatSquad extends Component {
                     />
                     <button
                         className={ 'nes-btn CatSquad__button' + (isFull ? ' is-success' : '') }
-                        disabled={isFull}
+                        disabled={!isFull}
                         onClick={this.sendToLeague}
                         type="button"
                     >
