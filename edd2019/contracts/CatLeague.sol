@@ -19,6 +19,7 @@ contract League{
     mapping(address => Squad) public leagueTeams;
     address[] participants;
     mapping(address => uint) public points;
+    mapping(address => bool) public inscribed;
     
     event MatchStart(
         string squadName1,
@@ -46,10 +47,13 @@ contract League{
         require(nameByte.length != 0, "A squad needs a name");
         require(catContract.ownerOf(catId1) == msg.sender, "Owner does not have cat1");
         require(catContract.ownerOf(catId2) == msg.sender, "Owner does not have cat2");
-        require(catContract.ownerOf(catId3) == msg.sender, "Owner does not have cat3");        
+        require(catContract.ownerOf(catId3) == msg.sender, "Owner does not have cat3"); 
         Squad memory squad = Squad(name, catId1,catId2,catId3);
-        participants.push(msg.sender);
+        if(!inscribed[msg.sender]){
+            participants.push(msg.sender);
+        }
         leagueTeams[msg.sender] = squad;
+        inscribed[msg.sender] = true;
     }
     
     function getParticipant(uint i) public view returns(address){
@@ -87,6 +91,7 @@ contract League{
             participant = participants[i];
             delete leagueTeams[participant];
             delete points[participant];
+            delete inscribed[participant];
          }
          delete participants;
          isLeagueFinished = false;
