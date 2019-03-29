@@ -2,8 +2,8 @@ import React from 'react';
 import Web3 from 'web3';
 import catABI from "../contractsBin/cat.json";
 import { Config } from "../config/Config";
-
-import CatAvatar from '../components/CatAvatar'
+import CatAvatar from '../components/CatAvatar';
+import RemainingStats from '../components/RemaningStats';
 
 class AddCat extends React.Component {
     constructor() {
@@ -15,9 +15,10 @@ class AddCat extends React.Component {
             CatIntelligence: 0,
             CatCuteness: 0,
             CatEvilness: 0,
-            ChaosLevel: undefined
+            ChaosLevel: undefined,
         }
     }
+
     addCat = async () => {
         // Metamask insert web3 object into window object when the account is unlocked
         var web3 = new Web3(window.web3.currentProvider);
@@ -41,7 +42,9 @@ class AddCat extends React.Component {
     }
 
     handleInputChange = (event) => {
-        this.setState({ [event.target.dataset.name]: event.target.value });
+        this.setState({
+            [event.target.dataset.name]: event.target.value,
+        }); 
     }
 
     handleSubmit = (event) => {
@@ -82,6 +85,7 @@ class AddCat extends React.Component {
                                         data-name="CatName"
                                         value={this.state.CatName}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="nes-field">
@@ -96,6 +100,7 @@ class AddCat extends React.Component {
                                         data-name="CatStealth"
                                         value={this.state.CatStealth}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="nes-field">
@@ -110,6 +115,7 @@ class AddCat extends React.Component {
                                         data-name="CatDexterity"
                                         value={this.state.CatDexterity}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="nes-field">
@@ -124,6 +130,7 @@ class AddCat extends React.Component {
                                         data-name="CatIntelligence"
                                         value={this.state.CatIntelligence}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="nes-field">
@@ -138,6 +145,7 @@ class AddCat extends React.Component {
                                         data-name="CatCuteness"
                                         value={this.state.CatCuteness}
                                         onChange={this.handleInputChange}
+                                        required
                                     />
                                 </div>
                                 <div className="nes-field">
@@ -162,6 +170,7 @@ class AddCat extends React.Component {
                                         data-name="ChaosLevel"
                                         defaultValue=""
                                         onChange={this.handleInputChange}
+                                        required
                                     >
                                         <option value="" disabled hidden>Choose wisely</option>
                                         <option value="0">Good Boii</option>
@@ -169,6 +178,7 @@ class AddCat extends React.Component {
                                         <option value="2">Chaos Bringer</option>
                                     </select>
                                 </div>
+                                <RemainingStats {...this.state}/>
                                 <div className="AddCatButton">
                                     <button className="nes-btn is-primary" onClick={this.addCat}>Create cat</button>
                                 </div>
