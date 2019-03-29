@@ -1,5 +1,5 @@
 export const Config = {
-    CatContractAddress: '0x56f70c095b8c9bac5f646f0b154bb7693c2d2b5e',
-    LeagueContractAddress: '0x0462dfa8169c310dee4c67abaa88da2f8e5c7b54',
+    CatContractAddress: '0x495dbe1a18e258974d2863ab4ace804cbf20bca8',
+    LeagueContractAddress: '0x96204c65fdf618503564b07f6f430e55ab4615ad',
     catsPerSquad: 3
 };
